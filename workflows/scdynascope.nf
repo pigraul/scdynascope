@@ -63,7 +63,8 @@ workflow SCDYNASCOPE {
         STAR_GENOME(
             params.fasta,
             ch_gtf,
-            params.genome_name
+            params.genome_name,
+            params.star_cpus,
         )
         ch_versions = ch_versions.mix(STAR_GENOME.out.versions.first())
         star_genome = STAR_GENOME.out.index
@@ -86,6 +87,7 @@ workflow SCDYNASCOPE {
         star_genome,
         "${projectDir}/assets/",
         ch_whitelist,
+        params.star_cpus,
     )
     ch_versions = ch_versions.mix(STARSOLO.out.versions.first())
 
