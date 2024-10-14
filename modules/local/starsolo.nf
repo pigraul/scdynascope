@@ -12,6 +12,7 @@ process STARSOLO {
     path index
     path assets_dir
     path whitelist
+    val star_cpus
 
     output:
     tuple val(meta), path("${meta.id}.Solo.out/GeneFull_Ex50pAS/raw") , emit: raw_matrix
@@ -35,14 +36,14 @@ process STARSOLO {
     def prefix = "${meta.id}"
     def (forward, reverse) = reads.collate(2).transpose()
     def args = task.ext.args ?: ''
-    // do not indent
+
     """
     STAR \\
         ${starsolo_cmd} \\
         --readFilesIn ${reverse.join( "," )} ${forward.join( "," )} \\
         --genomeDir $index \\
         --outFileNamePrefix $prefix. \\
-        --runThreadN ${task.cpus} \\
+        --runThreadN ${star_cpus} \\
         $args
 
 

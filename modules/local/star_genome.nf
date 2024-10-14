@@ -11,6 +11,7 @@ process STAR_GENOME {
     path fasta
     path gtf
     val genome_name
+    val star_cpus
 
     output:
     path "$genome_name"            , emit: index
@@ -29,7 +30,7 @@ process STAR_GENOME {
         --genomeDir ${genome_name}/ \\
         --genomeFastaFiles $fasta \\
         $include_gtf \\
-        --runThreadN $task.cpus \\
+        --runThreadN ${star_cpus} \\
         --genomeSAindexNbases ${sa} \\
         $memory \\
         $args

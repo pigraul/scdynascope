@@ -3,7 +3,7 @@ process LABELED_SUMMARY {
     label 'process_single'
 
     conda 'conda-forge::scanpy==1.10.2 conda-forge::numpy==1.26.4'
-    container "biocontainers/scanpy:1.10.2 biocontainers/numpy:1.26.4"
+    container "raulee/scanpy-numpy"
 
     input:
     tuple val(meta), path(labeled_dir), path(filtered_dir)

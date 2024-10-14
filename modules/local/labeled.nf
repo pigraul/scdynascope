@@ -3,7 +3,7 @@ process LABELED {
     label 'process_high_memory'
 
     conda 'conda-forge::pandas==2.2.1 bioconda::pysam==0.22.1 conda-forge::scipy==1.14.0'
-    container "biocontainers/pandas:2.2.1 biocontainers/pysam:0.22.1--py38h15b938a_0 biocontainers/scipy:1.14.0"
+    container "raulee/sgr-python-samtools"
 
     input:
     tuple val(meta), path(bam), path(snp), path(matrix_dir)

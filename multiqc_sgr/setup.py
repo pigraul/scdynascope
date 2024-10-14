@@ -12,7 +12,7 @@ setup(
     license="MIT",
     packages=find_packages(),
     include_package_data=True,
-    install_requires=["multiqc==1.21"],
+    install_requires=["multiqc==1.24.1"],
     entry_points={
         "multiqc.modules.v1": [
             "scsnp = multiqc_sgr.scsnp:MultiqcModule",

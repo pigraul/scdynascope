@@ -3,7 +3,7 @@ process CONVERSION_MERGE {
     label 'process_median'
 
     conda 'conda-forge::pandas==2.2.1 bioconda::samtools=1.20'
-    container "biocontainers/pandas:2.2.1 biocontainers/samtools:1.20--h50ea8bc_0"
+    container "raulee/sgr-python-samtools"
 
     input:
     tuple val(meta), path(input_bams, stageAs: "?/*")

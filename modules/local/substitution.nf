@@ -3,7 +3,7 @@ process SUBSTITUTION {
     label 'process_single'
 
     conda 'conda-forge::pandas==2.2.1 bioconda::pysam==0.22.1'
-    container "biocontainers/pandas:2.2.1 biocontainers/pysam:0.22.1--py38h15b938a_0"
+    container "raulee/sgr-python-samtools"
 
     input:
     tuple val(meta), path(bam)
