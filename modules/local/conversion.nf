@@ -15,7 +15,7 @@ process CONVERSION {
     output:
     tuple val(meta), path("${meta.id}_split/*.bam"), emit: bam_chunks
     tuple val(meta), path("${meta.id}_split/*.csv"), emit: csv_chunks
-    //path "versions.yml"                            , emit: versions
+    path "versions.yml"                            , emit: versions
 
     when:
     task.ext.when == null || task.ext.when
