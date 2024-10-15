@@ -3,7 +3,7 @@ process LABELED_SUMMARY {
     label 'process_single'
 
     conda 'conda-forge::scanpy==1.10.2'
-    container "csgenetics/scanpy_anndata:0.0.3"
+    container "raulee/sgr-scanpy"
 
     input:
     tuple val(meta), path(labeled_dir), path(filtered_dir)
@@ -22,6 +22,10 @@ process LABELED_SUMMARY {
     def args = task.ext.args ?: ''
     
     """
+    mkdir ./tmp
+    chmod ugo+rwx -R ./tmp
+    export NUMBA_CACHE_DIR="./tmp"
+
     labeled_summary.py \\
         --outdir ./ \\
         --sample ${meta.id} \\
