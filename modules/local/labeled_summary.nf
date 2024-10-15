@@ -4,6 +4,7 @@ process LABELED_SUMMARY {
 
     conda 'conda-forge::scanpy==1.10.2'
     container "raulee/sgr-scanpy"
+    containerOptions '--env HOME=/tmp'
 
     input:
     tuple val(meta), path(labeled_dir), path(filtered_dir)
@@ -22,9 +23,7 @@ process LABELED_SUMMARY {
     def args = task.ext.args ?: ''
     
     """
-    mkdir ./tmp
-    chmod ugo+rwx -R ./tmp
-    export NUMBA_CACHE_DIR="./tmp"
+
 
     labeled_summary.py \\
         --outdir ./ \\
