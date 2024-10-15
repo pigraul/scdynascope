@@ -2,7 +2,7 @@ process LABELED_SUMMARY {
     tag "$meta.id"
     label 'process_single'
 
-    conda 'conda-forge::scanpy==1.10.2 conda-forge::numpy==1.26.4'
+    conda 'conda-forge::scanpy==1.10.2'
     container "raulee/sgr-scanpy"
 
     input:
