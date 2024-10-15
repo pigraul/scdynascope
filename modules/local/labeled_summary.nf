@@ -3,7 +3,7 @@ process LABELED_SUMMARY {
     label 'process_single'
 
     conda 'conda-forge::scanpy==1.10.2'
-    container "vt_evelien/scanpy_env:1.1"
+    container "csgenetics/scanpy_anndata:0.0.3"
 
     input:
     tuple val(meta), path(labeled_dir), path(filtered_dir)
