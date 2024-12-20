@@ -66,6 +66,7 @@ Genome files and parameters.
 | `min_cells` | Calculate the minimum number of cells required for TOR of a gene. | `integer` | 10 |  |  |
 | `min_genes` | Calculate the minimum number of genes required for TOR of a cell. | `integer` | 10 |  |  |
 | `split_n_reads` | Split to have approximately N reads per output file. <details><summary>Help</summary><small>https://gatk.broadinstitute.org/hc/en-us/articles/360041849771-SplitSamByNumberOfReads-Picard</small></details> | `integer` | 1000000 |  |  |
+| `all_type_plot` | Plot subsititution rate for all conversion type. | `boolean` | false |  |  |
 
 ## Optional modules
 

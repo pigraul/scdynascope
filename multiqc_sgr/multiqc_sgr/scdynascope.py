@@ -298,6 +298,7 @@ class MultiqcModule(BaseMultiqcModule):
 
     def substitution_plot(self, substitution_data):
         # Config for the plot
+        labele_cats = ["All", "TC"]
         pconfig = {
             "id": "scdynascope_substitution_plot",
             "title": "scdynascope: Substitution Rate",
@@ -305,6 +306,8 @@ class MultiqcModule(BaseMultiqcModule):
             "xlab": "Type",
             "stacking": "group",
             "cpswitch": False,
+            "data_labels": labele_cats,
+            "hide_zero_cats": False,
         }
         cats = [
             {
@@ -322,7 +325,13 @@ class MultiqcModule(BaseMultiqcModule):
                 "T_to_G": {"color": "#cb181d"},
             }
         ]
-        return bargraph.plot(substitution_data, cats=cats, pconfig=pconfig)
+        v_sample = defaultdict(dict)
+        for sample in substitution_data:
+            for v in labele_cats:
+                v_sample[v].update({sample: substitution_data[sample][v]})
+        plot_data = [v_sample[v] for v in labele_cats]
+        #return bargraph.plot(substitution_data, cats=cats, pconfig=pconfig)
+        return bargraph.plot(plot_data, cats=cats, pconfig=pconfig)
 
     def tor_plot(self, tor_data):
         v_sample = defaultdict(dict)

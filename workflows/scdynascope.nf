@@ -135,8 +135,11 @@ workflow SCDYNASCOPE {
     ch_versions = ch_versions.mix(CONVERSION_MERGE.out.versions.first())
     
     // substitution stats
+    ch_merge = CONVERSION_MERGE.out.conversion_bam.join(CONVERSION_MERGE.out.conversion_snp)
+    ch_bg = params.bg_snp ? params.bg_snp : []
     SUBSTITUTION (
-        CONVERSION_MERGE.out.conversion_bam,
+        ch_merge,
+        ch_bg,
     )    
     ch_multiqc_files = ch_multiqc_files.mix(SUBSTITUTION.out.json.collect{it[1]})
 

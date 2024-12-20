@@ -101,11 +101,11 @@ Get conversion for each read and add tags.
 
 ## substitution
 
-Computes the overall conversion rates in reads and plots a barplot.
+Computes the overall substitution rates in reads and plots a barplot.
 
 **Output files**
 
-- `{sample}.substitution.tsv` The overall substitution rates for each conversion type in reads.
+- `{sample}.TC_substitution.tsv` Substitution rate of labeled and background sites.
 
 ## labeled
 

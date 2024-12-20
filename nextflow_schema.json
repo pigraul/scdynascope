@@ -190,6 +190,22 @@
                 }
             }
         },
+        "substitution_options": {
+            "title": "Substitution modules",
+            "type": "object",
+            "description": "",
+            "default": "",
+            "properties": {
+                "bg_snp": {
+                    "type": "string",
+                    "description": "Backgroup snp files, multiple files split by comma."
+                },
+                "all_type_plot": {
+                    "type": "boolean",
+                    "description": "If true, plot nucleotide substitution rate of all conversion type."
+                }            
+            }
+        },
         "labeled_options": {
             "title": "Labeled modules",
             "type": "object",

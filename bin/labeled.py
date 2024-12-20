@@ -154,12 +154,9 @@ class Labeled:
                         continue
                 bcf_in.close()
             else:
-                try:
-                    sys.exit(1)
-                except SystemExit:
-                    print("Background snp file format cannot be recognized! Only csv or vcf format.")
-                finally:
-                    print("Background snp file format cannot be recognized! Only csv or vcf format.")
+                raise ValueError(
+                    "Background snp file format cannot be recognized! Only csv or vcf format."
+                )
         return outdict
 
     def write_sparse_matrix(self, df, matrix_dir):

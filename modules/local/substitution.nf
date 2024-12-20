@@ -6,18 +6,22 @@ process SUBSTITUTION {
     container "raulee/sgr-python-samtools"
 
     input:
-    tuple val(meta), path(bam)
+    tuple val(meta), path(bam), path(snp)
+    val bgfiles
 
     output:
-    tuple val(meta), path("*.tsv"),  emit: substitution_stat
+    tuple val(meta), path("*.TC_substitution.tsv"),  emit: substitution_stat
     tuple val(meta), path("*.json"), emit: json
 
     script:
+    def args = task.ext.args ?: ''
+    def extra_bg = bgfiles.join(' ')
 
     """
     substitution.py \\
         --bam ${bam} \\
         --outdir ./ \\
-        --sample ${meta.id}
+        --sample ${meta.id} \\
+        --bg_snp ${snp} $extra_bg  $args 
     """
 }
